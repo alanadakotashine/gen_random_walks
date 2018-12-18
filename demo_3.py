@@ -78,7 +78,14 @@ if __name__ == "__main__":
 
 
 
-    #_A_obs, _X_obs, _z_obs = utils.load_npz('data/cora_ml.npz')
+    _A_obs, _X_obs, _z_obs = utils.load_npz('data/cora_ml.npz')
+    _A_obs = _A_obs + _A_obs.T
+    _A_obs[_A_obs > 1] = 1
+    lcc = utils.largest_connected_components(_A_obs)
+    _A_obs = _A_obs[lcc,:][:,lcc]
+    _N = _A_obs.shape[0]
+
+    A = _A_obs.todense()
     # clusters = []
     # G = nx.Graph()
     # for i in range(5):
@@ -97,7 +104,7 @@ if __name__ == "__main__":
     # G.add_edge(68,95)
     # _A_obs = nx.adjacency_matrix(G)
     # A = _A_obs.todense()
-    #A = np.loadtxt('netgan/plots/five_cluster_line.txt')
+    #A = np.loadtxt('netgan/plots/cora_ml.txt')
 
     # print(A[25,50])
     # print(A[55,125])
@@ -109,9 +116,9 @@ if __name__ == "__main__":
     #L = nx.normalized_laplacian_matrix(G).todense()
     #w,v = np.linalg.eig(L)
     #w = sorted(w)
-    A = np.loadtxt('netgan/plots/five_cluster_line.txt')
-    G = nx.from_numpy_matrix(A)
-    print('hi')
+    #A = np.loadtxt('netgan/plots/cora_ml.txt')
+    #G = nx.from_numpy_matrix(A)
+
     #H = nx.gnp_random_graph(50,.9)
     #H = nx.relabel_nodes(H,dict(zip(range(50),range(100,150))))
     #G=nx.union(H,G)
@@ -181,12 +188,12 @@ if __name__ == "__main__":
     print(train_graph_a.shape)
     #print(train_graph_a[80,130])
     #print(train_graph_a[66,99])
-    np.savetxt('netgan/plots/five_cluster_line.txt',A)
-    np.savetxt('netgan/plots/five_cluster_line_val_edges.txt',val_ones)
-    np.savetxt('netgan/plots/five_cluster_line_val_non_edges.txt',val_zeros)
-    np.savetxt('netgan/plots/five_cluster_line_test_edges.txt',test_ones)
-    np.savetxt('netgan/plots/five_cluster_line_test_non_edges.txt',test_zeros)
-    np.savetxt('netgan/plots/five_cluster_line_training.txt',train_graph_a)
+    np.savez('netgan/plots/cora_ml',A)
+    np.savez('netgan/plots/cora_ml_val_edges',val_ones)
+    np.savez('netgan/plots/cora_ml_val_non_edges',val_zeros)
+    np.savez('netgan/plots/cora_ml_test_edges',test_ones)
+    np.savez('netgan/plots/cora_ml_test_non_edges',test_zeros)
+    np.savez('netgan/plots/cora_ml_training',train_graph_a)
 
 
 
@@ -304,9 +311,9 @@ if __name__ == "__main__":
     norm = MidpointNormalize(midpoint=0)
     im = ax.imshow(edge_data_nz, norm=norm, cmap=plt.cm.seismic, interpolation='nearest')
     fig.colorbar(im)
-    plt.savefig('netgan/plots/five_cluster_line_walk_emp_heat.pdf')
+    plt.savefig('netgan/plots/cora_ml_walk_emp_heat.pdf')
     plt.gcf().clear()
-    np.savetxt('netgan/plots/five_cluster_line_walk_emp.txt',edge_data_nz)
+    #np.savetxt('netgan/plots/cora_ml_walk_emp.txt',edge_data_nz)
 
     x=walker.fast_mix_walk().next()
     edges = []
@@ -329,9 +336,9 @@ if __name__ == "__main__":
     norm = MidpointNormalize(midpoint=0)
     im = ax.imshow(edge_data_nz, norm=norm, cmap=plt.cm.seismic, interpolation='nearest')
     fig.colorbar(im)
-    plt.savefig('netgan/plots/five_cluster_line_fmm_emp_heat.pdf')
+    plt.savefig('netgan/plots/cora_ml_fmm_emp_heat.pdf')
     plt.gcf().clear()
-    np.savetxt('netgan/plots/five_cluster_line_fmm_emp.txt',edge_data_nz)
+    #np.savetxt('netgan/plots/cora_ml_fmm_emp.txt',edge_data_nz)
 
 
     x=walker.combo_walk().next()
@@ -354,9 +361,9 @@ if __name__ == "__main__":
     norm = MidpointNormalize(midpoint=0)
     im = ax.imshow(edge_data_nz, norm=norm, cmap=plt.cm.seismic, interpolation='nearest')
     fig.colorbar(im)
-    plt.savefig('netgan/plots/five_cluster_line_combo_walk5_fmm5_emp_heat.pdf')
+    plt.savefig('netgan/plots/cora_ml_combo_walk5_fmm5_emp_heat.pdf')
     plt.gcf().clear()
-    np.savetxt('netgan/plots/five_cluster_line_combo_walk5_fmm5_emp.txt',edge_data_nz)
+    #np.savetxt('netgan/plots/cora_ml_combo_walk5_fmm5_emp.txt',edge_data_nz)
 
 
 
