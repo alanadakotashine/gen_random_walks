@@ -111,6 +111,7 @@ if __name__ == "__main__":
     #w = sorted(w)
     A = np.loadtxt('netgan/plots/five_cluster_line.txt')
     G = nx.from_numpy_matrix(A)
+    print('hi')
     #H = nx.gnp_random_graph(50,.9)
     #H = nx.relabel_nodes(H,dict(zip(range(50),range(100,150))))
     #G=nx.union(H,G)
