@@ -110,7 +110,8 @@ def sub ( graph , p ) :
     eig_list = zip( eig_vals , np . transpose ( eig_vecs ) )
     eig_list . sort ( key = lambda x : x [0])
     lambda_2 , lambda_n = eig_list [ -2][0] , eig_list [0][0]
-    #print(max((lambda_2,-lambda_n)))
+    print('computed subgradient')
+    print(max((lambda_2,-lambda_n)))
     if lambda_2 >= - lambda_n :
         #print('second')
         u = [ u_i . real for u_i in eig_list [ -2][1]]
