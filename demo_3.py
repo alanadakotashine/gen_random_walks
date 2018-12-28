@@ -523,7 +523,7 @@ if __name__ == "__main__":
 
 
     netgan = NetGAN(_N, data_size, walk_gen, gpu_id=0, use_gumbel=True, disc_iters=num_disc_iters,
-                    W_down_discriminator_size=50, W_down_generator_size=50,
+                    W_down_discriminator_size=128, W_down_generator_size=128,
                     l2_penalty_generator=1e-7, l2_penalty_discriminator=5e-5,
                     generator_layers=[40], discriminator_layers=[30], temp_start=5, 
                     learning_rate=0.0003, batch_size=batch_size, wasserstein_penalty=10, seed=netgan_seed, wstate = wstate)
@@ -549,8 +549,8 @@ if __name__ == "__main__":
     # In[12]:
 
 
-    eval_every = 400
-    plot_every = 400
+    eval_every = 1000
+    plot_every = 1000
 
 
     # In[ ]:

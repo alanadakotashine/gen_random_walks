@@ -545,8 +545,8 @@ class NetGAN:
             final_score = tf.layers.dense(last_output, 1, reuse=reuse, name="Discriminator.Out")
             return final_score
 
-    def train(self, A_orig, val_ones, val_zeros,  max_iters=50000, stopping=None, eval_transitions=15e4,
-              transitions_per_iter=1500, max_patience=5, eval_every=100, plot_every=-1, save_directory="../snapshots",
+    def train(self, A_orig, val_ones, val_zeros,  max_iters=50000, stopping=None, eval_transitions=15e6,
+              transitions_per_iter=150000, max_patience=5, eval_every=100, plot_every=-1, save_directory="../snapshots",
               model_name=None, continue_training=False):
         """
         Parameters
