@@ -1025,7 +1025,7 @@ def fast_mix_transition_matrix_sg(A):
 def fast_mix_transition_matrix_slem(A):
     W = A.todense()
     G = nx.from_numpy_matrix(W)
-    sol = optimize (G , W, max_iter =500)
+    sol = optimize (G , W, max_iter =20)
     mu = sol ['f']
     p = sol ['p']
     i = sol ['iter']
