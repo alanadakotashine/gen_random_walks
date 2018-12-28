@@ -291,78 +291,78 @@ if __name__ == "__main__":
 
     # P = walker.P 
 
-    x=walker.walk().next()
-    edges = []
-    for walk in x:
-       for i in range(15):
-           edges.append([walk[i],walk[i+1]])
-    edge_data = np.zeros([_N,_N])
-    for [i,j] in edges:
-        edge_data[i][j] = edge_data[i][j]+1
-        edge_data[j][i] = edge_data[j][i]+1
-    scale = float(num_edges)/float(edge_data.sum())
-    edge_data_nz = np.copy(edge_data)
-    for i in range(_N):
-        edge_data_nz[i][i]=0
-    edge_data = edge_data*scale
-    scale = float(num_edges)/float(edge_data_nz.sum())
-    edge_data_nz = edge_data_nz*scale
-    fig, ax = plt.subplots()
-    norm = MidpointNormalize(midpoint=0)
-    im = ax.imshow(edge_data_nz, norm=norm, cmap=plt.cm.seismic, interpolation='nearest')
-    fig.colorbar(im)
-    plt.savefig('netgan/plots/cora_ml_walk_emp_heat.pdf')
-    plt.gcf().clear()
-    #np.savetxt('netgan/plots/cora_ml_walk_emp.txt',edge_data_nz)
+    # x=walker.walk().next()
+    # edges = []
+    # for walk in x:
+    #    for i in range(15):
+    #        edges.append([walk[i],walk[i+1]])
+    # edge_data = np.zeros([_N,_N])
+    # for [i,j] in edges:
+    #     edge_data[i][j] = edge_data[i][j]+1
+    #     edge_data[j][i] = edge_data[j][i]+1
+    # scale = float(num_edges)/float(edge_data.sum())
+    # edge_data_nz = np.copy(edge_data)
+    # for i in range(_N):
+    #     edge_data_nz[i][i]=0
+    # edge_data = edge_data*scale
+    # scale = float(num_edges)/float(edge_data_nz.sum())
+    # edge_data_nz = edge_data_nz*scale
+    # fig, ax = plt.subplots()
+    # norm = MidpointNormalize(midpoint=0)
+    # im = ax.imshow(edge_data_nz, norm=norm, cmap=plt.cm.seismic, interpolation='nearest')
+    # fig.colorbar(im)
+    # plt.savefig('netgan/plots/cora_ml_walk_emp_heat.pdf')
+    # plt.gcf().clear()
+    # #np.savetxt('netgan/plots/cora_ml_walk_emp.txt',edge_data_nz)
 
-    x=walker.fast_mix_walk().next()
-    edges = []
-    for walk in x:
-        for i in range(15):
-            edges.append([walk[i],walk[i+1]])
-    print(len(edges))
-    edge_data = np.zeros([_N,_N])
-    for [i,j] in edges:
-        edge_data[i][j] = edge_data[i][j]+1
-        edge_data[j][i] = edge_data[j][i]+1
-    scale = float(num_edges)/float(edge_data.sum())
-    edge_data_nz = np.copy(edge_data)
-    for i in range(_N):
-        edge_data_nz[i][i]=0
-    edge_data = edge_data*scale
-    scale = float(num_edges)/float(edge_data_nz.sum())
-    edge_data_nz = edge_data_nz*scale
-    fig, ax = plt.subplots()
-    norm = MidpointNormalize(midpoint=0)
-    im = ax.imshow(edge_data_nz, norm=norm, cmap=plt.cm.seismic, interpolation='nearest')
-    fig.colorbar(im)
-    plt.savefig('netgan/plots/cora_ml_fmm_emp_heat.pdf')
-    plt.gcf().clear()
-    #np.savetxt('netgan/plots/cora_ml_fmm_emp.txt',edge_data_nz)
+    # x=walker.fast_mix_walk().next()
+    # edges = []
+    # for walk in x:
+    #     for i in range(15):
+    #         edges.append([walk[i],walk[i+1]])
+    # print(len(edges))
+    # edge_data = np.zeros([_N,_N])
+    # for [i,j] in edges:
+    #     edge_data[i][j] = edge_data[i][j]+1
+    #     edge_data[j][i] = edge_data[j][i]+1
+    # scale = float(num_edges)/float(edge_data.sum())
+    # edge_data_nz = np.copy(edge_data)
+    # for i in range(_N):
+    #     edge_data_nz[i][i]=0
+    # edge_data = edge_data*scale
+    # scale = float(num_edges)/float(edge_data_nz.sum())
+    # edge_data_nz = edge_data_nz*scale
+    # fig, ax = plt.subplots()
+    # norm = MidpointNormalize(midpoint=0)
+    # im = ax.imshow(edge_data_nz, norm=norm, cmap=plt.cm.seismic, interpolation='nearest')
+    # fig.colorbar(im)
+    # plt.savefig('netgan/plots/cora_ml_fmm_emp_heat.pdf')
+    # plt.gcf().clear()
+    # #np.savetxt('netgan/plots/cora_ml_fmm_emp.txt',edge_data_nz)
 
 
-    x=walker.combo_walk().next()
-    edges = []
-    for walk in x:
-        for i in range(15):
-            edges.append([walk[i],walk[i+1]])
-    edge_data = np.zeros([_N,_N])
-    for [i,j] in edges:
-        edge_data[i][j] = edge_data[i][j]+1
-        edge_data[j][i] = edge_data[j][i]+1
-    scale = float(num_edges)/float(edge_data.sum())
-    edge_data_nz = np.copy(edge_data)
-    for i in range(_N):
-        edge_data_nz[i][i]=0
-    edge_data = edge_data*scale
-    scale = float(num_edges)/float(edge_data_nz.sum())
-    edge_data_nz = edge_data_nz*scale
-    fig, ax = plt.subplots()
-    norm = MidpointNormalize(midpoint=0)
-    im = ax.imshow(edge_data_nz, norm=norm, cmap=plt.cm.seismic, interpolation='nearest')
-    fig.colorbar(im)
-    plt.savefig('netgan/plots/cora_ml_combo_walk5_fmm5_emp_heat.pdf')
-    plt.gcf().clear()
+    # x=walker.combo_walk().next()
+    # edges = []
+    # for walk in x:
+    #     for i in range(15):
+    #         edges.append([walk[i],walk[i+1]])
+    # edge_data = np.zeros([_N,_N])
+    # for [i,j] in edges:
+    #     edge_data[i][j] = edge_data[i][j]+1
+    #     edge_data[j][i] = edge_data[j][i]+1
+    # scale = float(num_edges)/float(edge_data.sum())
+    # edge_data_nz = np.copy(edge_data)
+    # for i in range(_N):
+    #     edge_data_nz[i][i]=0
+    # edge_data = edge_data*scale
+    # scale = float(num_edges)/float(edge_data_nz.sum())
+    # edge_data_nz = edge_data_nz*scale
+    # fig, ax = plt.subplots()
+    # norm = MidpointNormalize(midpoint=0)
+    # im = ax.imshow(edge_data_nz, norm=norm, cmap=plt.cm.seismic, interpolation='nearest')
+    # fig.colorbar(im)
+    # plt.savefig('netgan/plots/cora_ml_combo_walk5_fmm5_emp_heat.pdf')
+    # plt.gcf().clear()
     #np.savetxt('netgan/plots/cora_ml_combo_walk5_fmm5_emp.txt',edge_data_nz)
 
 

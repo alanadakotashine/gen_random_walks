@@ -1114,7 +1114,7 @@ class RandomWalker:
         
 
         self.batch_size = batch_size
-        self.P, self.fmm_time = fast_mix_transition_matrix_slem(self.adj)
+        #self.P, self.fmm_time = fast_mix_transition_matrix_slem(self.adj)
         
         #self.M = genEdgeDist(self.edges, self.node_ixs, self.rw_len, self.p, self.q)
         
@@ -1123,10 +1123,10 @@ class RandomWalker:
         test = []
         
 
-        self.Combo = .5*self.P + .5*self.RW 
-        combo_stationary =solveStationary(np.transpose(self.Combo))
+        #self.Combo = .5*self.P + .5*self.RW 
+        #combo_stationary =solveStationary(np.transpose(self.Combo))
 
-        self.combo_stationary = [x.tolist()[0][0] for x in combo_stationary]
+        #self.combo_stationary = [x.tolist()[0][0] for x in combo_stationary]
         self.uniform = np.ones(N)*(1/float(N))
         self.RW_ex = expected_walk_w_matrix(self.node_ixs, self.rw_len, self.RW, self.uniform)
         #self.fmm_ex = expected_walk_w_matrix(self.node_ixs,self.rw_len, self.P, uniform)
