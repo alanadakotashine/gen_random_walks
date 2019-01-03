@@ -251,11 +251,11 @@ if __name__ == "__main__":
     # In[6]:
 
     #length of the walk
-    rw_len = 16
+    rw_len = 2
     #batch_size is how many data-points are fed into the discriminator
-    batch_size = 12*15
+    batch_size = 12*15*15
     #number of nodes in the walk
-    data_size = 16
+    data_size = 2
 
     #train_graph = _A_obs.tocoo()
     #val_ones = np.empty(np.shape(val_ones))
@@ -269,7 +269,7 @@ if __name__ == "__main__":
 
     walker = utils.RandomWalker(train_graph, rw_len, p=1, q=1, batch_size=batch_size)
     #print(hi)
-    batch_size = 12*15
+    batch_size = 12*15*15
     M = walker.RW
     walk_gen = walk_generator(walker,walk_type)
 
